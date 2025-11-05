@@ -1,18 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Login Page</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="login-box">
-      <h2>Login</h2>
-      <input type="text" id="username" placeholder="Username" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
-      <p id="message"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OtakuStream — Anime Gallery</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">◎</div>
+      <div>
+        <h1>OtakuStream</h1>
+        <p class="tag">Your curated anime gallery</p>
+      </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search anime..." aria-label="Search anime">
+      <select id="genreFilter" aria-label="Filter by genre">
+        <option value="all">All genres</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid-wrap">
+      <div id="animeGrid" class="anime-grid" aria-live="polite">
+        <!-- Cards injected by JavaScript -->
+      </div>
+      <div id="empty" class="empty-state" hidden>
+        <p>No anime found — try another search.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with ❤️ • Dark theme • Simple HTML/CSS/JS</p>
+  </footer>
+
+  <!-- Modal for details -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modalClose"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close details">✕</button>
+      <div class="modal-content">
+        <img id="modalImage" alt="" />
+        <div class="modal-info">
+          <h2 id="modalTitle"></h2>
+          <p class="meta" id="modalMeta"></p>
+          <p id="modalDescription"></p>
+          <div class="modal-actions">
+            <button id="watchBtn" class="btn">Watch Trailer</button>
+            <button id="favBtn" class="btn btn-ghost">Add to List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
